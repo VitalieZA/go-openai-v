@@ -1,7 +1,7 @@
 package test
 
 import (
-	"github.com/sashabaranov/go-openai/internal/test/checks"
+	"github.com/VitalieZA/go-openai-v/internal/test/checks"
 
 	"net/http"
 	"os"

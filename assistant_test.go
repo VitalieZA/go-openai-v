@@ -3,8 +3,8 @@ package openai_test
 import (
 	"context"
 
-	openai "github.com/sashabaranov/go-openai"
-	"github.com/sashabaranov/go-openai/internal/test/checks"
+	openai "github.com/VitalieZA/go-openai-v"
+	"github.com/VitalieZA/go-openai-v/internal/test/checks"
 
 	"encoding/json"
 	"fmt"
@@ -17,7 +17,7 @@ func TestAssistant(t *testing.T) {
 	assistantID := "asst_abc123"
 	assistantName := "Ambrogio"
 	assistantDescription := "Ambrogio is a friendly assistant."
-	assistantInstructions := `You are a personal math tutor. 
+	assistantInstructions := `You are a personal math tutor.
 When asked a question, write and run Python code to answer the question.`
 	assistantFileID := "file-wB6RM6wHdA49HfS2DJ9fEyrH"
 	limit := 20
@@ -260,7 +260,7 @@ func TestAzureAssistant(t *testing.T) {
 	assistantID := "asst_abc123"
 	assistantName := "Ambrogio"
 	assistantDescription := "Ambrogio is a friendly assistant."
-	assistantInstructions := `You are a personal math tutor. 
+	assistantInstructions := `You are a personal math tutor.
 When asked a question, write and run Python code to answer the question.`
 	assistantFileID := "file-wB6RM6wHdA49HfS2DJ9fEyrH"
 	limit := 20

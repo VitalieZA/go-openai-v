@@ -5,7 +5,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/sashabaranov/go-openai/jsonschema"
+	"github.com/VitalieZA/go-openai-v/jsonschema"
 )
 
 func TestDefinition_MarshalJSON(t *testing.T) {
@@ -157,7 +157,7 @@ func TestDefinition_MarshalJSON(t *testing.T) {
    "items":{
       "type":"string",
       "properties":{
-         
+
       }
    },
    "properties":{

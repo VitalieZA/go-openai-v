@@ -10,8 +10,8 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/sashabaranov/go-openai/internal/test"
-	"github.com/sashabaranov/go-openai/internal/test/checks"
+	"github.com/VitalieZA/go-openai-v/internal/test"
+	"github.com/VitalieZA/go-openai-v/internal/test/checks"
 )
 
 var errTestRequestBuilderFailed = errors.New("test request builder failed")
@@ -194,7 +194,7 @@ func TestHandleErrorResp(t *testing.T) {
 				{
 					"error":{}
 				}`)),
-			expected: `error, status code: 503, status: , message: , body: 
+			expected: `error, status code: 503, status: , message: , body:
 				{
 					"error":{}
 				}`,
@@ -211,7 +211,7 @@ func TestHandleErrorResp(t *testing.T) {
 	<hr><center>nginx</center>
 	</body>
 	</html>`)),
-			expected: `error, status code: 413, status: , message: invalid character '<' looking for beginning of value, body: 
+			expected: `error, status code: 413, status: , message: invalid character '<' looking for beginning of value, body:
 	<html>
 	<head><title>413 Request Entity Too Large</title></head>
 	<body>

@@ -12,9 +12,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/sashabaranov/go-openai"
-	"github.com/sashabaranov/go-openai/internal/test"
-	"github.com/sashabaranov/go-openai/internal/test/checks"
+	"github.com/VitalieZA/go-openai-v"
+	"github.com/VitalieZA/go-openai-v/internal/test"
+	"github.com/VitalieZA/go-openai-v/internal/test/checks"
 )
 
 // TestAudio Tests the transcription and translation endpoints of the API using the mocked server.

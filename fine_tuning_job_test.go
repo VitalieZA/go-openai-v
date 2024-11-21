@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"testing"
 
-	"github.com/sashabaranov/go-openai"
-	"github.com/sashabaranov/go-openai/internal/test/checks"
+	"github.com/VitalieZA/go-openai-v"
+	"github.com/VitalieZA/go-openai-v/internal/test/checks"
 )
 
 const testFineTuninigJobID = "fine-tuning-job-id"
