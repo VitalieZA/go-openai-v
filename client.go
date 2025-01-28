@@ -21,6 +21,15 @@ type Client struct {
 	createFormBuilder func(io.Writer) utils.FormBuilder
 }
 
+type DefaultResponse struct {
+	Headers http.Header
+	Body    map[string]interface{}
+}
+
+func (r *DefaultResponse) SetHeader(headers http.Header) {
+	r.Headers = headers
+}
+
 type Response interface {
 	SetHeader(http.Header)
 }
