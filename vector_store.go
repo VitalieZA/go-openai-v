@@ -2,6 +2,7 @@ package openai
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"net/http"
 	"net/url"
@@ -231,8 +232,46 @@ func (c *Client) DeleteVectorStoreFile(
 	req, _ := c.newRequest(ctx, http.MethodDelete, c.fullURL(urlSuffix),
 		withBetaAssistantVersion(c.config.AssistantVersion))
 
-	err = c.sendRequest(req, nil)
-	return
+	var resBody Response
+	err = c.sendRequest(req, resBody)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+func (c *Client) DeleteVectorStoreFileC(
+	ctx context.Context,
+	vectorStoreID string,
+	fileID string,
+) (response DefaultResponse, err error) {
+	urlSuffix := fmt.Sprintf("%s/%s%s/%s", vectorStoresSuffix, vectorStoreID, vectorStoresFilesSuffix, fileID)
+	req, _ := c.newRequest(ctx, http.MethodDelete, c.fullURL(urlSuffix),
+		withBetaAssistantVersion(c.config.AssistantVersion))
+
+	// Send the request and get the raw response
+	httpResp, err := c.config.HTTPClient.Do(req)
+	if err != nil {
+		return DefaultResponse{}, err
+	}
+	defer httpResp.Body.Close()
+
+	// Check if the response status is successful
+	if httpResp.StatusCode < 200 || httpResp.StatusCode >= 300 {
+		return DefaultResponse{}, fmt.Errorf("unexpected status code: %d", httpResp.StatusCode)
+	}
+
+	// Populate the response struct
+	response = DefaultResponse{
+		Headers: httpResp.Header,
+	}
+
+	// Decode the response body into the Body field
+	if err := json.NewDecoder(httpResp.Body).Decode(&response.Body); err != nil {
+		return DefaultResponse{}, fmt.Errorf("failed to decode response body: %w", err)
+	}
+
+	return response, nil
 }
 
 // ListVectorStoreFiles Lists the currently available files for a vector store.
